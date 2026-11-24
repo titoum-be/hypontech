@@ -1,0 +1,13 @@
+services:
+  hypontech-bridge:
+    build: .
+    container_name: hypontech-bridge
+    networks: host
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Paris          # Set your local timezone (used for inverter RTC sync)
+      LISTEN_PORT: 51100
+      MQTT_HOST: "MQTT_HOST"   # Your Home Assistant / Mosquitto LAN IP (or 127.0.0.1 if same host)
+      MQTT_PORT: MQTT_PORT
+      MQTT_USER: "MQTT_USER"
+      MQTT_PASS: "MQTT_PASS"
